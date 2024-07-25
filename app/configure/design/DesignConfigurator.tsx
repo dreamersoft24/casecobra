@@ -30,7 +30,7 @@ const DesignConfigurator =({configId,imageUrl,imageDimensions}:DesignConfigurato
 
 const{toast}=useToast();
 const router=useRouter()
-const {mutate:saveConfig}=useMutation({
+const {mutate:saveConfig,isPending}=useMutation({
     mutationKey:["save-config"],
     mutationFn: async (args:SaveConfigArgs)=>{
   
@@ -297,7 +297,8 @@ return <div className="relative mt-20 grid grid-cols-1 lg:grid-cols-3 mb-20 pb-2
                     <p className="font-medium whitespace-nowrap ">
                         {formatPrice((BASE_PRICE+options.finish.price+options.material.price)/100)}
                     </p>
-                    <Button onClick={()=>saveConfig({
+                    <Button isLoading={isPending} disabled={isPending} loadingText="saving" onClick={()=>saveConfig({
+                    
                         configId,
                         color:options.color.value,
                         finish:options.finish.value,
