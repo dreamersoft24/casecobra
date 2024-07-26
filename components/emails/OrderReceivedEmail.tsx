@@ -49,7 +49,7 @@ return <Html>
                     {orderId}
                   </Text>
                   </Column>
-                  <Column style={{width:170}}>
+                  <Column style={{width:170,marginLeft:40}}>
                   <Text style={global.paragraphWithBold}>
                     Order Date
                   </Text>
